@@ -8,11 +8,11 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
     'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
     'browserVersion': 'latest',
     'LT:Options': {
-      'platform': 'Windows 10',
-      'build': 'Playwright Single Build',
+      'platform': 'Windows 11',
+      'build': 'Playwright Sample Build',
       'name': 'Playwright Sample Test',
-      'user': process.env.LT_USERNAME,
-      'accessKey': process.env.LT_ACCESS_KEY,
+      'user': 'bkiran297',
+      'accessKey': 'HqWo4ik1ewOjwM5KCPgVTJzZ3WFzYCduiIn013fm8T7cnB7lSm',
       'network': true,
       'video': true,
       'console': true,
@@ -29,18 +29,18 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
 
   const page = await browser.newPage()
 
-  await page.goto("https://duckduckgo.com");
-
-  let element = await page.locator("[name=\"q\"]");
-  await element.click();
-  await element.type("LambdaTest");
-  await element.press("Enter");
-  const title = await page.title()
-
+  await page.goto('https://www.lambdatest.com/selenium-playground');
+        await page.getByRole('link', { name: 'Simple Form Demo' }).click();
+        await expect(page.url()).toContain("simple-form-demo");
+        const inputText = "Welcome to LambdaTest";
+        await page.getByPlaceholder('Please enter your Message').fill(inputText);
+        await page.locator('//button[@id="showInput"]').click();
+        await page.waitForSelector('//p[@id="message"]')
+        const messageText = await page.locator('//p[@id="message"]').textContent()
   try {
-    expect(title).toEqual('LambdaTest at DuckDuckGo')
+    expect(messageText).toEqual(inputText)
     // Mark the test as completed or failed
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Test scenario 1 passed' } })}`)
     await teardown(page, browser)
   } catch (e) {
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
