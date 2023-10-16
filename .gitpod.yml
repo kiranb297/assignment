@@ -4,4 +4,4 @@
 
 tasks:
   - init: npm install
-    command: npx playwright test test_1.spec.ts
+    command: npx playwright test assignment.spec.ts

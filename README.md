@@ -1,4 +1,5 @@
-The repo contains the playwright certificate assignment in typescript to run it is compiled to javascript
+The repo contains the playwright certificate assignment in typescript to run give npx playwright test assignment.spec.ts.
+To run it on lambda test it is compiled to javascript
 
 i> playwright_Test_Scenario_1.ts 
  1. Open LambdaTest’s Selenium Playground from
