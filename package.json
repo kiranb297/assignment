@@ -1,13 +1,7 @@
 {
   "name": "lambdatest-playwright-sample",
   "scripts": {
-    "test": "node playwright-single.js",
-    "test-smartui": "node playwright-smartui.js",
-    "test-parallel": "node playwright-parallel.js",
-    "test-android": "node playwright-android-real-device.js",
-    "test-extension": "node playwright-extensions-test.js",
-    "test-iPhone-emulation": "node playwright-single-on-iphone.js",
-    "test-lighthouse-report": "node playwright-lighthouse-report.js"
+    "test": "npx playwright test"
   },
   "engines": {
     "node": ">=12.7.0"
